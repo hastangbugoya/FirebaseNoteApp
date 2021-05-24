@@ -29,7 +29,7 @@ class UploadFragment: Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        uplaod_
         upload_button.setOnClickListener {
             val ref = FirebaseDatabase.getInstance().reference.child("Notes")
             val key = ref.push().key ?: ""
