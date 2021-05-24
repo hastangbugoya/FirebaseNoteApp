@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MyFirebaseApplication</string>
+    <string name="upload_hint_edittext">note</string>
+</resources>
