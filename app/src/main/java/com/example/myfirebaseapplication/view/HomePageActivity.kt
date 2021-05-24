@@ -39,7 +39,6 @@ class HomePageActivity : AppCompatActivity() {
 
         add_note_imageview.setOnClickListener {
             val fragment = UploadFragment()
-
             supportFragmentManager.beginTransaction()
                 .addToBackStack(fragment.tag)
                 .replace(R.id.main_frame, fragment)
