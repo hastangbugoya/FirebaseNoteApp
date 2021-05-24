@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myfirebaseapplication.R
 import com.example.myfirebaseapplication.model.Note
+import com.example.myfirebaseapplication.utility.DebugHelper.Companion.LogKitty
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -28,6 +29,7 @@ class HomePageActivity : AppCompatActivity() {
                         // notes@ Misc I
                         it.getValue(Note::class.java)?.let { item ->
                             userNotes.add(item)
+                            LogKitty(item.toString())
                         }
                     }
                     //send the updated list to adapter

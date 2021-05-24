@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.myfirebaseapplication.R
 import com.example.myfirebaseapplication.model.SignUpUser
+import com.example.myfirebaseapplication.utility.DebugHelper.Companion.LogKitty
 import kotlinx.android.synthetic.main.signup_layout.*
 
 class SignupFragment: Fragment() {
@@ -27,7 +28,7 @@ class SignupFragment: Fragment() {
         signup_button.setOnClickListener {
             val email = su_email_edittext.text.toString().trim()
             val password = su_password_edittext.text.toString().trim()
-
+            LogKitty("${email},${password}")
             (requireActivity() as SignInActivity).signupUser(SignUpUser(email, password))
         }
     }

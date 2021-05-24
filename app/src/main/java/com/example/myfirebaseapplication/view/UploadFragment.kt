@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import com.example.myfirebaseapplication.R
 import com.example.myfirebaseapplication.model.Note
@@ -32,15 +33,18 @@ class UploadFragment: Fragment() {
         upload_button.setOnClickListener {
             val ref = FirebaseDatabase.getInstance().reference.child("Notes")
             val key = ref.push().key ?: ""
-            val nowDate: Date
             val post = Note(
                 FirebaseAuth.getInstance().currentUser.toString(),
                 key,
                 note_upload_note.text.toString().trim()
             )
             LogKitty(">$${key}< >>>>> ${post.toString()}")
-            ref.child(key).setValue(post)
-            Toast.makeText(requireContext(), "Success!!", Toast.LENGTH_SHORT).show()
+            ref.child(key).setValue(post).addOnCompleteListener() {
+                if (it.isSuccessful) {
+                    Toast.makeText(requireContext(), "Success!!", Toast.LENGTH_SHORT).show()
+                    //note_upload_note.text.clear()
+                }
+            }
         }
     }
 }
